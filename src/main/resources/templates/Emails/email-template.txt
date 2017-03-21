@@ -1,0 +1,24 @@
+<html>
+
+<body>
+
+<p style="margin:15px 0;"><b>[This e-mail was automatically generated. Please do not reply.]</b></p>
+
+<p style="margin:15px 0;">Hello ${user}!</p>
+
+<p style="margin:15px 0;">Thank you for creating account to the Carrental.com . To confirm
+your subscription, please click the link within 24 hours.</p>
+
+<p style="margin:15px 0 15px 30px;"><a href="${url}">${url}</a></p>
+
+<p style="margin:15px 0;">If you can't click the link above, please paste the following URL into your
+browser:</p>
+
+<p style="margin:15px 0 15px 30px;">${url}</p>
+
+<p style="margin:15px 0;">(If you did not create account to the Carrental.com, kindly ignore this message.)</p>
+
+<p style="margin:15px 0;">Thanks,<br />Carrental.com</p>
+
+</body>
+</html>
