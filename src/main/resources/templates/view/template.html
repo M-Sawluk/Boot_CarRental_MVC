@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Title</title>
+</head>
+<div th:fragment="footer">
+    <link th:href="@{../css/footer.css}" rel="stylesheet"/>
+<div  class="section"  >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section" style="width: 100%">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center" th:text="#{footer.subscribe.label}">
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                <form role="form">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="search-query form-control" id="mail" palceholder="email">
+                            <span class="input-group-btn"> <a class="btn btn-success" id="submail" type="submit">Ok</a>
+							</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+<!--footer-->
+
+<footer class="footer1">
+    <div class="container">
+
+        <div class="row">
+            <!-- row -->
+
+            <div class="col-lg-3 col-md-3 col-md-offset-3">
+                <!-- widgets column left -->
+
+                <ul class="list-unstyled clear-margins">
+                    <!-- widgets -->
+
+                    <li class="widget-container widget_nav_menu">
+                        <!-- widgets list -->
+
+                        <h1 class="title-widget" th:text="#{footer.useful.label}">
+
+                        </h1>
+
+                        <ul>
+
+
+                            <li><a href="mailto:Loonger@gmail.com" th:utext="#{footer.ask.label}"><i
+                                    class="fa fa-angle-double-right"></i></a></li>
+                            <li><a  th:utext="#{footer.maps.label}"
+                                    href="https://www.google.pl/maps/@49.3806827,25.5071849,4.83z"><i
+                                    class="fa fa-angle-double-right"></i></a></li>
+                            <li><a th:utext="#{footer.weather.label}"
+                                    href="https://www.viamichelin.com/web/Weather/"><i
+                                    class="fa fa-angle-double-right"></i></a></li>
+
+
+                        </ul>
+
+                    </li>
+
+                </ul>
+
+
+            </div>
+            <!-- widgets column left end -->
+
+
+            <div class="col-lg-3 col-md-3 col-md-offset-1">
+                <!-- widgets column center -->
+
+
+
+                <ul class="list-unstyled clear-margins">
+                    <!-- widgets -->
+
+                    <li class="widget-container widget_recent_news">
+                        <!-- widgets list -->
+
+                        <h1 class="title-widget" th:text="#{footer.contact.label}">
+                        </h1>
+
+                        <div class="footerp">
+
+                            <h2 class="title-median">Loonger ®</h2>
+                            <p>
+                                <b>Email: </b> <a href="mailto:info@Longer.com">info@Longer.com</a>
+                            </p>
+                            <p>
+                                <b th:text="#{footer.helpline.label}"></b> <b
+                                    style="color: #ffc106;">(8AM to 10PM):</b> +91-8130890090,
+                                +91-8130190010
+                            </p>
+
+                            <p>
+                                <b th:text="#{footer.address.label}">: </b>
+                                <b th:text="#{footer.adr.label}"></b>
+                            </p>
+                            <p>
+                                <b>Phone Number : </b>(+48) 555-532-111
+                            </p>
+
+                        </div>
+
+                        <div class="social-icons">
+
+                            <ul class="nomargin">
+
+                                <a href="https://www.facebook.com"><i
+                                        class="fa fa-facebook-square fa-3x social-fb" ></i></a>
+                                <a href="https://twitter.com"><i
+                                        class="fa fa-twitter-square fa-3x social-tw" ></i></a>
+                                <a href="https://plus.google.com/"><i
+                                        class="fa fa-google-plus-square fa-3x social-gp" ></i></a>
+                                <a href="mailto:Loonger@gmail.com"><i
+                                        class="fa fa-envelope-square fa-3x social-em" ></i></a>
+
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="footer-bottom">
+
+    <div class="container">
+
+        <div class="row">
+
+
+                <div class="copyright" align="center">© 2017 | LongerCompany | All rights
+                    reserved</div>
+
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+
+        </div>
+
+    </div>
+
+</div>
+    <script>
+
+        $(document).ready(function() {
+            $('#submail').click(function() {
+
+                var url='/carRental/';
+
+                window.location.href=url +'subscribe?mail='+$('#mail').val();
+
+            });
+        });
+    </script>
+</div>
+
+<div th:fragment="navbar">
+    <link th:href="@{../css/navigation.css}" rel="stylesheet"/>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div id="topnavbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-collapse">
+                        <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                            class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" th:href="@{/}" ><img height="45" th:src="@{/pictures/car-logo.png}" style="margin-top: -10px ;margin-left: -33px" /></a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+
+                        <li class="${current== 'home' ? 'active' : '' }">
+                            <a th:href="@{/}" th:text="#{navigation.home.label}"></a></li>
+
+                        <li class="${current=='contacts' ? 'active' : '' }">
+                            <a th:href="@{/contacts}" th:text="#{navigation.contact.label}" ></a></li>
+
+                        <li class="${current=='rent' ? 'active' : '' }">
+                            <a th:href="@{/carrent}" th:text="#{navigation.carRental.label}"></a></li>
+                    </ul>
+
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown"
+                               href="#" th:text="#{language.label}">
+                            </a>
+                            <ul class="dropdown-menu">
+
+                                <li><a th:href="@{?lang=pl}" th:text="#{language.polish.label}"></a></li>
+                                <li><a th:href="@{?lang=en}" th:text="#{language.english.label}"></a></li>
+                            </ul>
+                        </li>
+                        <li th:if="${#locale.toString().equals('pl')}">
+                            <img style="padding-top: 17px;
+                                       padding-right: 10px; margin-left: -5px" th:src="@{/pictures/poland.jpg}" />
+                        </li>
+                        <li  th:if="${#locale.toString().equals('en')}">
+                            <img style="padding-top: 17px;
+                                       padding-right: 10px; margin-left: -5px" th:src="@{/pictures/british.jpg}" />
+                        </li>
+                        <li sec:authorize="isAnonymous()">
+
+                            <a  th:href="@{/signup}" >
+                                <span th:text="#{navigation.signup.label}"></span>
+                            </a>
+
+                        </li>
+                        <li sec:authorize="isAuthenticated()" >
+                            <a sec:authorize="hasAuthority('ADMIN_ROLE')" th:href="@{/adminPage}">
+                                <span sec:authentication="name"></span>
+                            </a>
+                            <a sec:authorize="hasAuthority('USER_ROLE')" th:href="@{/userPage}">
+                                <span sec:authentication="name"></span>
+                            </a>
+                        </li>
+
+                        <li  sec:authorize="isAnonymous()">
+                            <a th:href="@{/login}" th:text="#{navigation.login.label}">
+                                <span class="glyphicon glyphicon-log-in"></span>
+                            </a>
+
+                        </li>
+
+                        <li sec:authorize="isAuthenticated()">
+                            <a href="javascript: document.logoutForm.submit()"
+                             th:text="#{form.logout.label}" role="menuitem"> Logout</a>
+
+                            <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+                                <input hidden type="submit" value="Sign Out"/>
+                            </form>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+</html>

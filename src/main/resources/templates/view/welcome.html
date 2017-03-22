@@ -5,23 +5,25 @@
 <head>
     <meta charset="utf-8">
     <title>Title</title>
-
+    <link th:href="@{../css/welcome.css}" rel="stylesheet"/>
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script
             src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script
             src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link th:href="@{/css/welcome.css}" rel="stylesheet"/>
+
     <script th:src="@{/js/jQuery.js}"></script>
     <script th:src="@{/js/scroll.js}"></script>
 </head>
 <body>
+<div th:replace="template :: navbar"></div>
 <div id="headerwrap">
 
     <div style="padding-top: 250px">
-        <a class="bt w-button" th:href="@{/renting?carId=}">
-            <p th:text="#{welcome.start.label}"/></p></a>
+        <a class="bt w-button" th:href="@{/renting?carId=}"
+           th:text="#{welcome.start.label}">
+        </a>
     </div>
     <div style="padding-top: 400px">
         <a href="#carouselrwrap" class="scroll">
@@ -29,70 +31,81 @@
         </a>
     </div>
 </div>
-<div id="carouselrwrap">
+<div id="carouselrwrap" style="width: 100%" align="center">
     <div align="center">
         <h1>
-            <p th:text="#{welcome.offers.label}"/></p>
-
+            <p th:text="#{welcome.offers.label}"></p>
         </h1>
     </div>
 
     <div class="container">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+
+
             <div class="carousel-inner">
+
                 <div class="item active" align="left">
                     <img th:attr="src=@{${pics[0]}}" />
                     <div class="carousel-caption">
-                        <h1 th:text="${list[0].name}"></h1>
+                        <h1 th:text="${list.get(0).name}"></h1>
                         <h3 th:text="${list.get(0).manufacturer}"></h3>
-                        <p th:text="${list.get(0).price}"></p>
+                        <p th:text="${list.get(0).price}+'zl/day'"></p>
                         <p th:text="${list.get(0).description}"></p>
-                        <a th:attr="href=@{'/renting?carId='+${list.get(0).carId}}" class="btn btn-primary">
-                            <span class="glyphicon-info-sign glyphicon"/></span>
-                            <p th:text="#{welcome.get.label}"/></p>
-                        </a>
+                        <p>
+                            <a th:attr="href=@{'/renting?carId='+${list.get(0).carId}}"
+                               th:utext="#{welcome.get.label}" class="btn btn-primary">
+                                <span class="glyphicon-info-sign glyphicon" /></span>
+                            </a>
+                        </p>
                     </div>
                 </div>
 
-                <div class="item active" align="left">
+                <div class="item" align="left">
                     <img th:attr="src=@{${pics[1]}}" />
                     <div class="carousel-caption">
-                        <h1 th:text="${list[1].name}"></h1>
+                        <h1 th:text="${list.get(1).name}"></h1>
                         <h3 th:text="${list.get(1).manufacturer}"></h3>
-                        <p th:text="${list.get(1).price}"></p>
+                        <p th:text="${list.get(1).price}+'zl/day'" ></p>
                         <p th:text="${list.get(1).description}"></p>
-                        <a th:attr="href=@{'/renting?carId='+${list.get(1).carId}}" class="btn btn-primary">
-                            <span class="glyphicon-info-sign glyphicon"/></span>
-                            <p th:text="#{welcome.get.label}"/></p>
-                        </a>
+                        <p>
+                            <a th:attr="href=@{'/renting?carId='+${list.get(1).carId}}"
+                               th:utext="#{welcome.get.label}" class="btn btn-primary">
+                                <span class="glyphicon-info-sign glyphicon" /></span>
+                            </a>
+                        </p>
                     </div>
                 </div>
 
-                <div class="item active" align="left">
+                <div class="item" align="left">
                     <img th:attr="src=@{${pics[2]}}" />
                     <div class="carousel-caption">
-                        <h1 th:text="${list[2].name}"></h1>
+                        <h1 th:text="${list.get(2).name}"></h1>
                         <h3 th:text="${list.get(2).manufacturer}"></h3>
-                        <p th:text="${list.get(2).price}"></p>
+                        <p th:text="${list.get(2).price}+'zl/day'"></p>
                         <p th:text="${list.get(2).description}"></p>
-                        <a th:attr="href=@{'/renting?carId='+${list.get(2).carId}}" class="btn btn-primary">
-                            <span class="glyphicon-info-sign glyphicon"/></span>
-                            <p th:text="#{welcome.get.label}"/></p>
-                        </a>
+                        <p>
+                            <a th:attr="href=@{'/renting?carId='+${list.get(2).carId}}"
+                               th:utext="#{welcome.get.label}" class="btn btn-primary">
+                                <span class="glyphicon-info-sign glyphicon" /></span>
+                            </a>
+                        </p>
                     </div>
                 </div>
 
-                <div class="item active" align="left">
+                <div class="item" align="left">
                     <img th:attr="src=@{${pics[3]}}" />
                     <div class="carousel-caption">
-                        <h1 th:text="${list[3].name}"></h1>
+                        <h1 th:text="${list.get(3).name}"></h1>
                         <h3 th:text="${list.get(3).manufacturer}"></h3>
-                        <p th:text="${list.get(3).price}"></p>
+                        <p th:text="${list.get(3).price}+'zl/day'"></p>
                         <p th:text="${list.get(3).description}"></p>
-                        <a th:attr="href=@{'/renting?carId='+${list.get(3).carId}}" class="btn btn-primary">
-                            <span class="glyphicon-info-sign glyphicon"/></span>
-                            <p th:text="#{welcome.get.label}"/></p>
-                        </a>
+                        <p>
+                            <a th:attr="href=@{'/renting?carId='+${list.get(3).carId}}"
+                               th:utext="#{welcome.get.label}" class="btn btn-primary">
+                                <span class="glyphicon-info-sign glyphicon" /></span>
+                            </a>
+                        </p>
                     </div>
                 </div>
 
@@ -101,14 +114,15 @@
 
 
             <ul class="nav nav-pills nav-justified">
-                <li data-target="#myCarousel" data-slide-to="0" ><a href="#" ><p>a</p></a></li>
-                <li data-target="#myCarousel" data-slide-to="1" ><a href="#"><p>a</p></a></li>
-                <li data-target="#myCarousel" data-slide-to="2" ><a href="#" ><p >a</p></a></li>
-                <li data-target="#myCarousel" data-slide-to="3" ><a href="#"><p >a</p></a></li>
+                <li data-target="#myCarousel" data-slide-to="0"><a href="#" th:utext="${list.get(0).name}"></a></li>
+                <li data-target="#myCarousel" data-slide-to="1"><a href="#"  th:utext="${list.get(1).name}"></a></li>
+                <li data-target="#myCarousel" data-slide-to="2"><a href="#"  th:utext="${list.get(2).name}"></a></li>
+                <li data-target="#myCarousel" data-slide-to="3"><a href="#"  th:utext="${list.get(3).name}"></a></li>
             </ul>
         </div>
 
     </div>
 </div>
+<div th:replace="template :: footer"></div>
 </body>
 </html>

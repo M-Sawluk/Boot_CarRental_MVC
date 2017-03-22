@@ -12,7 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * Created by Mike on 2017-03-19.
-// */
+ */
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -30,18 +30,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/adminPage/**").hasRole("ADMIN_ROLE")
+                .antMatchers("/adminPage/**").hasAuthority("ADMIN_ROLE")
+                .antMatchers("/userPage/**").hasAuthority("USER_ROLE")
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .usernameParameter("email")
-                .permitAll()
+                .failureUrl("/login-error.html")
                 .and()
                 .logout()
-                .logoutSuccessUrl("/login?logout")
-                .permitAll()
-                .and().csrf()
-                .and().exceptionHandling().accessDeniedPage("/403");
+                .logoutSuccessUrl("/")
+                .and()
+                .csrf()
+                .and()
+                .exceptionHandling().accessDeniedPage("/403");
 
     }
 

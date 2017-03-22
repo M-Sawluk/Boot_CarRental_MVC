@@ -1,7 +1,8 @@
 package com.michal.springboot.service;
 
-import com.michal.springboot.domain.Role;
+
 import com.michal.springboot.domain.User;
+import com.michal.springboot.forms.UserStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by Mike on 2017-03-19.
@@ -19,9 +19,6 @@ import java.util.Set;
 public class UserDetailsProvider implements UserDetails {
 
     private User user;
-
-    @Autowired
-    private UserService userService;
 
     private static final Logger log = LoggerFactory.getLogger(UserService.class);
 
@@ -32,21 +29,16 @@ public class UserDetailsProvider implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> authorities = new HashSet<>();
-        Set<Role> roles = new HashSet<>();
-        user.getRoles().forEach(roles::add);
 
-        log.info(String.format("%d user roles size",roles.size()));
-
-        roles.forEach(r->authorities.add(new SimpleGrantedAuthority(r.getRoleName())));
-
-        log.info(String.format("%d auth size",authorities.size()));
+        user.getRoles()
+                .forEach(r->authorities.add(new SimpleGrantedAuthority(r.getRoleName())));
 
         return authorities;
     }
 
     @Override
     public String getPassword() {
-        return user.getEmail();
+        return user.getPassword();
     }
 
     @Override
@@ -71,6 +63,12 @@ public class UserDetailsProvider implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return userService.isUserEnabled(user.getId());
+
+        if(user.getStatus()== UserStatus.ACTIVE){
+            return true;
+        }else {
+            return false;
+        }
+
     }
 }

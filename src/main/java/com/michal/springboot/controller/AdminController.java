@@ -53,14 +53,14 @@ public class AdminController {
         return "adminPage";
     }
 
-    @RequestMapping(value = "adminPage/addCar", method = RequestMethod.GET)
+    @RequestMapping(value = "/addCar", method = RequestMethod.GET)
     public String addCar(Model model) {
         model.addAttribute("newCar", new Car());
 
         return "addCar";
     }
 
-    @RequestMapping(value = "adminPage/addCar", method = RequestMethod.POST)
+    @RequestMapping(value = "/addCar", method = RequestMethod.POST)
     public String processCar(@ModelAttribute("newCar") @Valid Car car, BindingResult bindingResult,
                              HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
@@ -85,7 +85,7 @@ public class AdminController {
 
     }
 
-    @RequestMapping("adminPage/users/{page}")
+    @RequestMapping("/users/{page}")
     public String users(Model model, @RequestParam int page) {
 
         model.addAttribute("users", userService.getUserList(page));
@@ -93,7 +93,7 @@ public class AdminController {
         return "users";
     }
 
-    @RequestMapping(value = "adminPage/orders", method = RequestMethod.GET)
+    @RequestMapping(value = "/orders", method = RequestMethod.GET)
     public String admin(Model model) {
 
         model.addAttribute("orders", orderService.getAllOrders());
@@ -124,7 +124,7 @@ public class AdminController {
         User user = userService.findByUserName(name);
         userService.blockUser(user);
 
-        return "redirect:/adminPage?name=";
+        return "redirect:/adminPage";
     }
 
     @RequestMapping(value = "/addPlace", method = RequestMethod.GET)

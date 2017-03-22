@@ -3,10 +3,9 @@
 	text-align: center;
 	background-attachment: fixed;
 	margin-top: -20px;
-	margin-left: -9px;
 	background-position: center center;
 	min-height: 920px;
-	width: 100.9%;
+	width: 100%;
 	-webkit-background-size: 100%;
 	-moz-background-size: 100%;
 	-o-background-size: 100%;
@@ -21,6 +20,7 @@
 #carouselrwrap {
 	padding-top: 30px;
 	padding-bot: 50px;
+	width: 100%;
 }
 
 @font-face {

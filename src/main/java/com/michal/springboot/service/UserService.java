@@ -191,8 +191,10 @@ public class UserService {
     boolean isUserEnabled(Long id) {
 
         if (userRepository.findOne(id).getStatus() == UserStatus.ACTIVE) {
+            log.info("true");
             return true;
         } else {
+            log.info("false");
             return false;
         }
     }

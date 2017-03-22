@@ -15,7 +15,7 @@ public class LoginController {
 
     }
 
-    @RequestMapping("/loginfailed")
+    @RequestMapping("/login-error.html")
     public String loginerror(Model model) {
         model.addAttribute("error", "true");
         return "login";
@@ -23,7 +23,11 @@ public class LoginController {
 
     @RequestMapping("/logout")
     public String logout(Model model) {
-        return "templates.templates.Views.welcome";
+        return "welcome";
     }
 
+    @RequestMapping("/403")
+    public String denied(){
+        return "403";
+    }
 }
