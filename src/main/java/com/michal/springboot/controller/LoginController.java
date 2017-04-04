@@ -30,4 +30,8 @@ public class LoginController {
     public String denied(){
         return "403";
     }
+    @RequestMapping("/404")
+    public String error404(){
+        return "404";
+    }
 }

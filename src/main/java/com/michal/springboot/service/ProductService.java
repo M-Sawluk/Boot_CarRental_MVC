@@ -8,6 +8,8 @@ import com.michal.springboot.forms.CarStorageForm;
 import com.michal.springboot.repository.CarStorageRepository;
 import com.michal.springboot.repository.ProductRepository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,6 +22,8 @@ public class ProductService {
     private ProductRepository productRepository;
 
     private CarStorageRepository carStorageRepository;
+
+    private static final Logger log = LoggerFactory.getLogger(ProductService.class);
 
     public ProductService(ProductRepository productRepository, CarStorageRepository carStorageRepository) {
         this.productRepository = productRepository;

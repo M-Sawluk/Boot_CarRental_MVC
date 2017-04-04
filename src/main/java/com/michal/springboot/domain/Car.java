@@ -18,6 +18,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import com.michal.springboot.validators.CarId;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
@@ -30,7 +31,7 @@ public class Car implements Serializable {
     private long id;
 
     @Pattern(regexp = "C[0-9]+", message = "example: C1004")
-//    @CarId
+    @CarId
     private String carId;
 
     @NotNull

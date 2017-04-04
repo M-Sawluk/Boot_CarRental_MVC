@@ -46,7 +46,7 @@
             <div class="carousel-inner">
 
                 <div class="item active" align="left">
-                    <img th:attr="src=@{${pics[0]}}" />
+                    <img th:attr="src=@{${'/cars/'+list.get(0).carId+'.png'}}" />
                     <div class="carousel-caption">
                         <h1 th:text="${list.get(0).name}"></h1>
                         <h3 th:text="${list.get(0).manufacturer}"></h3>
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="item" align="left">
-                    <img th:attr="src=@{${pics[1]}}" />
+                    <img th:attr="src=@{${'/cars/'+list.get(1).carId+'.png'}}" />
                     <div class="carousel-caption">
                         <h1 th:text="${list.get(1).name}"></h1>
                         <h3 th:text="${list.get(1).manufacturer}"></h3>
@@ -78,7 +78,7 @@
                 </div>
 
                 <div class="item" align="left">
-                    <img th:attr="src=@{${pics[2]}}" />
+                    <img th:attr="src=@{${'/cars/'+list.get(2).carId+'.png'}}" />
                     <div class="carousel-caption">
                         <h1 th:text="${list.get(2).name}"></h1>
                         <h3 th:text="${list.get(2).manufacturer}"></h3>
@@ -94,7 +94,7 @@
                 </div>
 
                 <div class="item" align="left">
-                    <img th:attr="src=@{${pics[3]}}" />
+                    <img th:attr="src=@{${'/cars/'+list.get(3).carId+'.png'}}" />
                     <div class="carousel-caption">
                         <h1 th:text="${list.get(3).name}"></h1>
                         <h3 th:text="${list.get(3).manufacturer}"></h3>

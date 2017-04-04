@@ -2,6 +2,8 @@ package com.michal.springboot.controller;
 
 import com.michal.springboot.domain.Car;
 import com.michal.springboot.service.ProductService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -24,17 +26,14 @@ public class HomeNavBarProductController {
         this.productService = productSerivce;
     }
 
+    private static final Logger log = LoggerFactory.getLogger(HomeNavBarProductController.class);
+
     @RequestMapping("/")
     public String welcome(Model model) {
 
         try {
-            List<String> picsName = new ArrayList<>();
             List<Car> carList = productService.getCarForCarousel();
-            carList.forEach(c->picsName.add("/cars/"+c.getCarId()+".png"));
             model.addAttribute("list",carList );
-            model.addAttribute("pics",picsName);
-            model.addAttribute("aa","name");
-
         } catch (Exception e) {
             return "welcome";
         }
@@ -42,11 +41,12 @@ public class HomeNavBarProductController {
         return "welcome";
     }
 
-    @RequestMapping("/carrent/{min}/{max}/{name}")
+    @RequestMapping("/carrent/search/min/{min}/max/{max}/name/{name}")
     public String searchCar(Model model, @PathVariable int min, @PathVariable int max,
-                            @RequestParam("name") String name) {
+                            @PathVariable("name") String name) {
 
-        model.addAttribute("cars", productService.getProductsByFilter(min, max, name));
+
+        model.addAttribute("cars", productService.getProductsByFilter(max, min, name));
 
         return "rent";
 

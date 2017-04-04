@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <title>CarList</title>
+        <link th:href="@{../css/rent.css}" rel="stylesheet"/>
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script th:src="@{/js/jQuery.js}"></script>
+        <script th:src="@{../js/rent.js}"></script>
+
+    </head>
+
+    <body>
+        <div th:replace="template :: navbar"></div>
+
+            <div class="container">
+                <div class="row" align="center">
+                    <div class="col-md-9"><input type="text" class="
+                        search-query form-control" placeholder="Name or Manufacturer " id="search" />
+                    </div>
+                    <div class="col-md-1"><input type="text" class="
+                        search-query form-control" placeholder="Min Price " id="min" />
+                    </div>
+                    <div class="col-md-1"><input type="text" class="
+                        search-query form-control" placeholder="Max Price " id="max" />
+                    </div>
+                    <span class="input-group-btn">
+                            <a class="btn btn-danger  btn-block " id="searchbutton">
+                                <span class=" glyphicon glyphicon-search"></span>
+                            </a>
+                    </span>
+                </div>
+            </div>
+
+        <div class="container">
+
+            <strong>View</strong>
+            <div class="btn-group">
+                <a href="#" id="list" class="btn btn-default btn-sm "><span class="glyphicon glyphicon-th-list"></span>List</a>
+                <a href="#" id="grid" class="btn btn-default btn-sm "><span class="glyphicon glyphicon-th"></span>Grid</a>
+            </div>
+
+            <div id="products" class="row list-group">
+                <div th:each="car : ${cars}" class="item  col-xs-4 col-lg-4" id="lista">
+                    <div class="thumbnail">
+                        <img th:attr="src=@{${'/cars/'+car.carId+'.png'}}" />
+                        <div class="caption">
+                            <h4 class="group inner list-group-item-heading" th:text="${car.name}"></h4>
+                            <h3 th:text="'Producer: '+${car.manufacturer}"></h3>
+                            <p id="price" th:text="'Price: '+${car.price}+' zł/day'"></p>
+                            <p th:text="'Description: '+${car.type}+' '+${car.description}"></p>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <a class="btn btn-info" sec:authorize="hasAuthority('ADMIN_ROLE')"
+                                       th:attr="href=@{'/adminPage/carrent/delete?car='+${car.carId}}"
+                                       th:utext="#{rent.delete.label}"  ></a>
+                                    <a class="btn btn-danger" sec:authorize="hasAuthority('ADMIN_ROLE')"
+                                       th:attr="href=@{'/adminPage/carrent/edit?car='+${car.carId}}"
+                                       th:utext="#{rent.edit.label}"  ></a>
+                                    <a class="btn btn-warning" sec:authorize="hasAuthority('ADMIN_ROLE')"
+                                       th:attr="href=@{'/adminPage/carrent/setUnits?car='+${car.carId}}"
+                                       th:utext="#{rent.add.label}"  ></a>
+                                    <a class="btn btn-success btn-right " th:attr="href=@{/renting?carId=${car.carId}}"
+                                       th:utext="#{rent.rent.label}" ></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script>
+//      var cars = document.querySelectorAll('.thumbnail')[4].querySelector('h4').textContent;
+
+//        var products = document.getElementById('products');
+//
+//
+//
+//        $( "#products" ).empty();
+//
+//        products.append(cars[3]);
+//
+//     //   localStorage.setItem('products', 'true');
+//
+//        console.log(products);
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
