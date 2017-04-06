@@ -11,6 +11,7 @@ import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.michal.springboot.forms.OrderStatus;
 import com.michal.springboot.validators.RentingDateRange;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -39,12 +40,15 @@ public class Order implements Serializable {
     private Date rentEnd;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
     private User user;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
     private Car car;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
     private RentingPlace rentingPlace;
 
     @Enumerated(EnumType.STRING)

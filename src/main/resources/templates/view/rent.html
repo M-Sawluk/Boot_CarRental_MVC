@@ -46,7 +46,7 @@
 
             <div id="products" class="row list-group">
                 <div th:each="car : ${cars}" class="item  col-xs-4 col-lg-4" id="lista">
-                    <div class="thumbnail">
+                    <div class="thumbnail slide-in-elliptic-top-fwd">
                         <img th:attr="src=@{${'/cars/'+car.carId+'.png'}}" />
                         <div class="caption">
                             <h4 class="group inner list-group-item-heading" th:text="${car.name}"></h4>

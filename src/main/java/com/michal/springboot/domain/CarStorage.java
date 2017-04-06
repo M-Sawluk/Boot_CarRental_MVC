@@ -1,6 +1,8 @@
 package com.michal.springboot.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.io.Serializable;
 
 import javax.persistence.*;
@@ -15,9 +17,11 @@ public class CarStorage implements Serializable {
     private long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
     private Car car;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
     private RentingPlace rentingPlace;
 
     private int units;

@@ -1,5 +1,7 @@
 package com.michal.springboot.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class Role implements Serializable {
     private String roleName;
 
     @ManyToMany(mappedBy = "roles")
+    @JsonManagedReference
     private List<User> users;
 
     public Role() {

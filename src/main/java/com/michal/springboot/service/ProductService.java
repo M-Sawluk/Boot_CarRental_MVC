@@ -42,7 +42,7 @@ public class ProductService {
 
         List<Car> allCars = (List<Car>) productRepository.findAll();
         Collections.shuffle(allCars);
-        return allCars.subList(0, 4);
+        return allCars.subList(0, 5);
     }
 
     public List<Car> findAll() {

@@ -1,5 +1,7 @@
 package com.michal.springboot.domain;
 
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.michal.springboot.forms.ReCaptchaForm;
 import com.michal.springboot.forms.UserStatus;
 import com.michal.springboot.validators.PasswordRepetition;
@@ -72,6 +74,7 @@ public class User extends ReCaptchaForm implements Serializable {
     private UserStatus status;
 
     @OneToMany(mappedBy="user",orphanRemoval=true,fetch = FetchType.EAGER)
+    @JsonManagedReference
     private Set<Order> order = new HashSet<Order>();
 
     public User() {

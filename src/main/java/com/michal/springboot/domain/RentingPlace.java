@@ -1,5 +1,7 @@
 package com.michal.springboot.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -32,9 +34,11 @@ public class RentingPlace implements Serializable
 	private String placeNumber;
 	
 	@OneToMany(mappedBy="rentingPlace" , fetch = FetchType.EAGER)
+	@JsonManagedReference
 	private Set<CarStorage> carStorage = new HashSet<CarStorage>();
 	
 	@OneToMany(mappedBy="rentingPlace",orphanRemoval=true)
+	@JsonManagedReference
 	private Set<Order> order = new HashSet<Order>();
 	
 	

@@ -7,9 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,5 +66,11 @@ public class HomeNavBarProductController {
         }
 
         return "rent";
+    }
+
+    @RequestMapping(value="/rest/cars" ,method = RequestMethod.GET)
+    public @ResponseBody List<Car> getCars(){
+
+        return productService.getCarForCarousel();
     }
 }

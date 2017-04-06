@@ -18,6 +18,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.michal.springboot.validators.CarId;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -52,12 +54,14 @@ public class Car implements Serializable {
     private String description;
 
     @OneToMany(mappedBy = "car", fetch = FetchType.EAGER)
+    @JsonManagedReference
     private Set<CarStorage> carStorage = new HashSet<CarStorage>();
 
     @Transient
     private MultipartFile productImage;
 
     @OneToMany(mappedBy = "car", orphanRemoval = true, fetch = FetchType.EAGER)
+    @JsonManagedReference
     private Set<Order> order = new HashSet<Order>();
 
     public Set<CarStorage> getCarStorage() {
@@ -85,11 +89,13 @@ public class Car implements Serializable {
     }
 
     @Transient
+    @JsonIgnore
     public MultipartFile getProductImage() {
         return productImage;
     }
 
     @Transient
+    @JsonIgnore
     public void setProductImage(MultipartFile productImage) {
         this.productImage = productImage;
     }
