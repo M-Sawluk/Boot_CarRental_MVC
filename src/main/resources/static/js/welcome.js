@@ -58,9 +58,6 @@ function appendCarouselSlides(data){
 
 }
 
-var language = navigator.language;
-console.log(language);
-
 $(document).ready(function(){
     $('.carousel').carousel();
 

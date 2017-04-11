@@ -27,27 +27,8 @@ public class HomeNavBarProductController {
     private static final Logger log = LoggerFactory.getLogger(HomeNavBarProductController.class);
 
     @RequestMapping("/")
-    public String welcome(Model model) {
-
-        try {
-            List<Car> carList = productService.getCarForCarousel();
-            model.addAttribute("list",carList );
-        } catch (Exception e) {
-            return "welcome";
-        }
-
+    public String welcome() {
         return "welcome";
-    }
-
-    @RequestMapping("/carrent/search/min/{min}/max/{max}/name/{name}")
-    public String searchCar(Model model, @PathVariable int min, @PathVariable int max,
-                            @PathVariable("name") String name) {
-
-
-        model.addAttribute("cars", productService.getProductsByFilter(max, min, name));
-
-        return "rent";
-
     }
 
     @RequestMapping("/contacts")
